@@ -1,5 +1,5 @@
 ## All the packages you need
-list_of_pkgs <- c("shiny", "shinyWidgets", "shinydashboard", #"shinyDataFilter",        # App
+list_of_pkgs <- c("shiny", "shinyWidgets", "shinydashboard",                            # App
                   "dplyr", "tidyr", "stringr", "DT",                                    # Data
                   "ggplot2", "gtable", "grid", "gridExtra", "RColorBrewer", "pheatmap", # Visualization
                   "UpSetR", "plotly",                                                  
