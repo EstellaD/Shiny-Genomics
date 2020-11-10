@@ -32,13 +32,41 @@ ui <- dashboardPage(
 
 server <- function(input, output, session){
   # include the server part for each tab
+  source(file.path("tabs", "tab0_overview_srv.R"), local = TRUE)$value
+  source(file.path("tabs", "tab1_studyselection_srv.R"), local = TRUE)$value
+  source(file.path("tabs", "tab2_summarystats_srv.R"), local = TRUE)$value
+  source(file.path("tabs", "tab3_funcanalysis_srv.R"), local = TRUE)$value
   
   # jump to study menu item
+  observeEvent(input$jumpto_study, {
+    updateTabItems(session, "sidebar", "StudySelection")
+  })
   
   # show info modal in header
+  observeEvent(input$showinfo, {
+    showModal(modalDialog(
+      title = "Contacts",
+      h4("This shiny dashboard is brought to you by the Queen of the Otterland.  ",
+         tags$a(href="https://en.wikipedia.org/wiki/Asian_small-clawed_otter", "Source Code")),
+      br(),
+      h4("Dashboard Development Team"),
+      tags$ul(
+        tags$li("App Developer: ", tags$a(href="mailto: helloworld@yay.com", "Otter Queen (Canada)")),
+        tags$li("Data Analyst: ", tags$a(href="mailto: happyworld@yay.com", "Otter Majesty (China)")),
+        tags$li("Representative: ", tags$a(href="mailto: alloworld@yay.com", "Otter Highness (Switzerland)"))
+      ),
+      easyClose = TRUE
+    ))
+  })
   
   # show tutorial modal in header
-  
+  observeEvent(input$showtutorial, {
+    showModal(modalDialog(
+      title = "Tutorial",
+      p("Instruction is under development"),
+      easyClose = TRUE
+    ))
+  })
 }
   
 
